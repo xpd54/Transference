@@ -36,6 +36,9 @@ class ViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        DataController.fetchCurrentBalance { (balance) in
+            
+        }
         super.viewWillAppear(animated)
     }
 
