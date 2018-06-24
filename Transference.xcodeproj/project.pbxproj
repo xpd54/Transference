@@ -12,6 +12,7 @@
 		169E005F20DF1BFF007EC40A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 169E005D20DF1BFF007EC40A /* Main.storyboard */; };
 		169E006120DF1C03007EC40A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 169E006020DF1C03007EC40A /* Assets.xcassets */; };
 		169E006420DF1C03007EC40A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 169E006220DF1C03007EC40A /* LaunchScreen.storyboard */; };
+		6F82C1D25C26392D1DFCDF6F /* Pods_Transference.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B854AD8490B24EDC8D6A6755 /* Pods_Transference.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,9 @@
 		169E006020DF1C03007EC40A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		169E006320DF1C03007EC40A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		169E006520DF1C03007EC40A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		772C19B9AA19F2C3F103CE4C /* Pods-Transference.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Transference.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Transference/Pods-Transference.debug.xcconfig"; sourceTree = "<group>"; };
+		9919955E00E309E6F0E51E35 /* Pods-Transference.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Transference.release.xcconfig"; path = "Pods/Target Support Files/Pods-Transference/Pods-Transference.release.xcconfig"; sourceTree = "<group>"; };
+		B854AD8490B24EDC8D6A6755 /* Pods_Transference.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Transference.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +33,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F82C1D25C26392D1DFCDF6F /* Pods_Transference.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		06E489014003593FA2005435 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B854AD8490B24EDC8D6A6755 /* Pods_Transference.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		169E004D20DF1BFF007EC40A = {
 			isa = PBXGroup;
 			children = (
 				169E005820DF1BFF007EC40A /* Transference */,
 				169E005720DF1BFF007EC40A /* Products */,
+				A6ECD10FCA21A24EDEAC27E3 /* Pods */,
+				06E489014003593FA2005435 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +79,15 @@
 			path = Transference;
 			sourceTree = "<group>";
 		};
+		A6ECD10FCA21A24EDEAC27E3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				772C19B9AA19F2C3F103CE4C /* Pods-Transference.debug.xcconfig */,
+				9919955E00E309E6F0E51E35 /* Pods-Transference.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,9 +95,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 169E006820DF1C03007EC40A /* Build configuration list for PBXNativeTarget "Transference" */;
 			buildPhases = (
+				0883EC704F3579A2980DD67A /* [CP] Check Pods Manifest.lock */,
 				169E005220DF1BFF007EC40A /* Sources */,
 				169E005320DF1BFF007EC40A /* Frameworks */,
 				169E005420DF1BFF007EC40A /* Resources */,
+				BD10E3B3B8334B58C2811C49 /* [CP] Embed Pods Frameworks */,
+				537766050606F76689F7F161 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -129,6 +156,75 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0883EC704F3579A2980DD67A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Transference-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		537766050606F76689F7F161 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Transference/Pods-Transference-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseAuthUI.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseGoogleAuthUI.bundle",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseAuthUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseGoogleAuthUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Transference/Pods-Transference-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BD10E3B3B8334B58C2811C49 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Transference/Pods-Transference-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Transference/Pods-Transference-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		169E005220DF1BFF007EC40A /* Sources */ = {
@@ -278,11 +374,13 @@
 		};
 		169E006920DF1C03007EC40A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 772C19B9AA19F2C3F103CE4C /* Pods-Transference.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N24QP68ST7;
 				INFOPLIST_FILE = Transference/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -296,11 +394,13 @@
 		};
 		169E006A20DF1C03007EC40A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9919955E00E309E6F0E51E35 /* Pods-Transference.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N24QP68ST7;
 				INFOPLIST_FILE = Transference/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
