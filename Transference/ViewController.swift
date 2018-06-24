@@ -7,8 +7,13 @@
 //
 
 import UIKit
+import QuartzCore
 import FirebaseUI
 class ViewController: UIViewController {
+    @IBOutlet var balance: UILabel!
+    @IBOutlet var addPayee: UIButton!
+    @IBOutlet var payButton: UIButton!
+
     let authUI = FUIAuth.defaultAuthUI()!
     var user = Auth.auth().currentUser
     override func viewDidLoad() {
@@ -41,6 +46,13 @@ class ViewController: UIViewController {
     func showSignInUI() {
         let authViewController = authUI.authViewController()
         self.present(authViewController, animated: true, completion: nil)
+    }
+
+    @IBAction func AddPayee(_ sender: UIButton) {
+
+    }
+
+    @IBAction func Pay(_ sender: Any) {
     }
 }
 
