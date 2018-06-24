@@ -7,19 +7,22 @@
 //
 
 import UIKit
-
-class ViewController: UIViewController {
-
+import FirebaseUI
+class ViewController: UIViewController, FUIAuthDelegate {
+    let authUI = FUIAuth.defaultAuthUI()!
     override func viewDidLoad() {
+
+        // setup signup methods for firebase
+        authUI.delegate = self
+        let providers: [FUIAuthProvider] = [FUIGoogleAuth()]
+        self.authUI.providers = providers
+        let authViewController = authUI.authViewController()
+        self.present(authViewController, animated: true, completion: nil)
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-
-
 }
 
