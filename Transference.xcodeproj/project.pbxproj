@@ -12,6 +12,7 @@
 		169E005F20DF1BFF007EC40A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 169E005D20DF1BFF007EC40A /* Main.storyboard */; };
 		169E006120DF1C03007EC40A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 169E006020DF1C03007EC40A /* Assets.xcassets */; };
 		169E006420DF1C03007EC40A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 169E006220DF1C03007EC40A /* LaunchScreen.storyboard */; };
+		16E1725F20DF5AC6006556F1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 16E1725E20DF5AC6006556F1 /* GoogleService-Info.plist */; };
 		6F82C1D25C26392D1DFCDF6F /* Pods_Transference.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B854AD8490B24EDC8D6A6755 /* Pods_Transference.framework */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +24,7 @@
 		169E006020DF1C03007EC40A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		169E006320DF1C03007EC40A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		169E006520DF1C03007EC40A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		16E1725E20DF5AC6006556F1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		772C19B9AA19F2C3F103CE4C /* Pods-Transference.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Transference.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Transference/Pods-Transference.debug.xcconfig"; sourceTree = "<group>"; };
 		9919955E00E309E6F0E51E35 /* Pods-Transference.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Transference.release.xcconfig"; path = "Pods/Target Support Files/Pods-Transference/Pods-Transference.release.xcconfig"; sourceTree = "<group>"; };
 		B854AD8490B24EDC8D6A6755 /* Pods_Transference.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Transference.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -71,6 +73,7 @@
 			children = (
 				169E005920DF1BFF007EC40A /* AppDelegate.swift */,
 				169E005B20DF1BFF007EC40A /* ViewController.swift */,
+				16E1725E20DF5AC6006556F1 /* GoogleService-Info.plist */,
 				169E005D20DF1BFF007EC40A /* Main.storyboard */,
 				169E006020DF1C03007EC40A /* Assets.xcassets */,
 				169E006220DF1C03007EC40A /* LaunchScreen.storyboard */,
@@ -150,6 +153,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				169E006420DF1C03007EC40A /* LaunchScreen.storyboard in Resources */,
+				16E1725F20DF5AC6006556F1 /* GoogleService-Info.plist in Resources */,
 				169E006120DF1C03007EC40A /* Assets.xcassets in Resources */,
 				169E005F20DF1BFF007EC40A /* Main.storyboard in Resources */,
 			);
