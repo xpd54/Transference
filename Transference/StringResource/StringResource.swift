@@ -9,4 +9,5 @@
 import Foundation
 struct Label {
     static let Title = "Transference"
+    static let DataBaseRoot = "users"
 }

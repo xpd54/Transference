@@ -20,6 +20,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        // keepp database ppersisted and in sync                                                
+        Database.database().isPersistenceEnabled = true
+        let scoresRef = Database.database().reference(withPath: Label.DataBaseRoot)
+        scoresRef.keepSynced(true)
         return true
     }
 
