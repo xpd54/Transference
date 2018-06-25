@@ -16,6 +16,9 @@
 		16E1726220DF6F53006556F1 /* StringResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E1726120DF6F53006556F1 /* StringResource.swift */; };
 		16E1726420DFE80F006556F1 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E1726320DFE80F006556F1 /* DataController.swift */; };
 		6F82C1D25C26392D1DFCDF6F /* Pods_Transference.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B854AD8490B24EDC8D6A6755 /* Pods_Transference.framework */; };
+		9DCE89DF20E0D4D00039EB92 /* PayeeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCE89DD20E0D4D00039EB92 /* PayeeTableViewController.swift */; };
+		9DCE89E020E0D4D00039EB92 /* PayeeTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DCE89DE20E0D4D00039EB92 /* PayeeTableViewController.xib */; };
+		9DCE89E620E0DC270039EB92 /* PayeeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCE89E420E0DC270039EB92 /* PayeeTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +34,9 @@
 		16E1726320DFE80F006556F1 /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		772C19B9AA19F2C3F103CE4C /* Pods-Transference.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Transference.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Transference/Pods-Transference.debug.xcconfig"; sourceTree = "<group>"; };
 		9919955E00E309E6F0E51E35 /* Pods-Transference.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Transference.release.xcconfig"; path = "Pods/Target Support Files/Pods-Transference/Pods-Transference.release.xcconfig"; sourceTree = "<group>"; };
+		9DCE89DD20E0D4D00039EB92 /* PayeeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayeeTableViewController.swift; sourceTree = "<group>"; };
+		9DCE89DE20E0D4D00039EB92 /* PayeeTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PayeeTableViewController.xib; sourceTree = "<group>"; };
+		9DCE89E420E0DC270039EB92 /* PayeeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayeeTableViewCell.swift; sourceTree = "<group>"; };
 		B854AD8490B24EDC8D6A6755 /* Pods_Transference.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Transference.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -77,7 +83,8 @@
 			children = (
 				169E005920DF1BFF007EC40A /* AppDelegate.swift */,
 				169E005B20DF1BFF007EC40A /* ViewController.swift */,
-				16E1726320DFE80F006556F1 /* DataController.swift */,
+				9DCE89E120E0D4D50039EB92 /* PayeeViewController */,
+				9DCE89DC20E0D4880039EB92 /* DataController */,
 				16E1726020DF6F2B006556F1 /* StringResource */,
 				16E1725E20DF5AC6006556F1 /* GoogleService-Info.plist */,
 				169E005D20DF1BFF007EC40A /* Main.storyboard */,
@@ -94,6 +101,24 @@
 				16E1726120DF6F53006556F1 /* StringResource.swift */,
 			);
 			path = StringResource;
+			sourceTree = "<group>";
+		};
+		9DCE89DC20E0D4880039EB92 /* DataController */ = {
+			isa = PBXGroup;
+			children = (
+				16E1726320DFE80F006556F1 /* DataController.swift */,
+			);
+			path = DataController;
+			sourceTree = "<group>";
+		};
+		9DCE89E120E0D4D50039EB92 /* PayeeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				9DCE89DD20E0D4D00039EB92 /* PayeeTableViewController.swift */,
+				9DCE89E420E0DC270039EB92 /* PayeeTableViewCell.swift */,
+				9DCE89DE20E0D4D00039EB92 /* PayeeTableViewController.xib */,
+			);
+			path = PayeeViewController;
 			sourceTree = "<group>";
 		};
 		A6ECD10FCA21A24EDEAC27E3 /* Pods */ = {
@@ -168,6 +193,7 @@
 			files = (
 				169E006420DF1C03007EC40A /* LaunchScreen.storyboard in Resources */,
 				16E1725F20DF5AC6006556F1 /* GoogleService-Info.plist in Resources */,
+				9DCE89E020E0D4D00039EB92 /* PayeeTableViewController.xib in Resources */,
 				169E006120DF1C03007EC40A /* Assets.xcassets in Resources */,
 				169E005F20DF1BFF007EC40A /* Main.storyboard in Resources */,
 			);
@@ -249,8 +275,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DCE89E620E0DC270039EB92 /* PayeeTableViewCell.swift in Sources */,
 				16E1726220DF6F53006556F1 /* StringResource.swift in Sources */,
 				16E1726420DFE80F006556F1 /* DataController.swift in Sources */,
+				9DCE89DF20E0D4D00039EB92 /* PayeeTableViewController.swift in Sources */,
 				169E005C20DF1BFF007EC40A /* ViewController.swift in Sources */,
 				169E005A20DF1BFF007EC40A /* AppDelegate.swift in Sources */,
 			);

@@ -28,17 +28,18 @@ class ViewController: UIViewController {
         // check if current user is still login
         if user != nil {
             self.title = user?.displayName;
+            updateCurrentBalance()
         } else {
             showSignInUI()
         }
+        
+        // update current balance
 
         super.viewDidLoad()
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        DataController.fetchCurrentBalance { (balance) in
-            
-        }
+        
         super.viewWillAppear(animated)
     }
 
@@ -50,9 +51,18 @@ class ViewController: UIViewController {
         let authViewController = authUI.authViewController()
         self.present(authViewController, animated: true, completion: nil)
     }
+    
+    func updateCurrentBalance() {
+        DataController.fetchCurrentBalance { (balance) in
+            if let currentBalance = balance {
+                self.balance.text = "\(currentBalance)$"
+            }
+        }
+    }
 
     @IBAction func AddPayee(_ sender: UIButton) {
-
+        let payeeViewController = PayeeTableViewController()
+        self.navigationController?.pushViewController(payeeViewController, animated: true)
     }
 
     @IBAction func Pay(_ sender: Any) {
