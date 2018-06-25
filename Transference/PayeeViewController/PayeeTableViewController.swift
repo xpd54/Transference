@@ -11,6 +11,7 @@ import UIKit
 class PayeeTableViewController: UITableViewController {
     var listOfPayee = [NSDictionary]()
     override func viewDidLoad() {
+        self.clearsSelectionOnViewWillAppear = true
         super.viewDidLoad()
     }
 
@@ -18,6 +19,7 @@ class PayeeTableViewController: UITableViewController {
         super.loadView()
         self.tableView.backgroundColor = cellBackgroundColor
         self.title = Label.SelectPayee
+        self.tableView.separatorColor = .black
         setBarButton()
         updatePayeeList()
     }
@@ -28,7 +30,24 @@ class PayeeTableViewController: UITableViewController {
     }
 
     @objc func payScreen() {
-
+        let selectedRow = self.tableView.indexPathForSelectedRow
+        if selectedRow != nil {
+            let payViewController = PayViewController()
+            DataController.fetchCurrentBalance { (currentBalance) in
+                if currentBalance != nil {
+                    payViewController.balance = currentBalance!
+                    let user = self.listOfPayee[(selectedRow?.row)!]
+                    let name = user.object(forKey: Label.NameKey) as! String
+                    let email = user.object(forKey: Label.EmailKey) as! String
+                    payViewController.balance = currentBalance!
+                    payViewController.payeeName = name
+                    payViewController.payeeEmail = email
+                    // remove checkmark from cell before moving to pay screen
+                    self.tableView.cellForRow(at: selectedRow!)?.accessoryType = .none
+                    self.navigationController?.pushViewController(payViewController, animated: true)
+                }
+            }
+        }
     }
 
     func updatePayeeList() {
@@ -55,7 +74,7 @@ class PayeeTableViewController: UITableViewController {
         let user = listOfPayee[indexPath.row]
         let name = user.object(forKey: Label.NameKey) as! String
         let email = user.object(forKey: Label.EmailKey) as! String
-        cell.textLabel?.text = "\(name) <\(email)>"
+        cell.textLabel?.text = "\(name)   <\(email)>"
         return cell
     }
 

@@ -11,11 +11,14 @@ import Firebase
 private var ref: DatabaseReference!
 
 class DataController: NSObject {
-    static func fetchCurrentBalance(comppletion: @escaping (Float64?) -> Void) {
+    static func fetchCurrentBalance(comppletion: @escaping (Float?) -> Void) {
         let currentUserEmail = Auth.auth().currentUser?.email
         var balance = NSNumber()
         
         fetchAllPayee { (listOfPayee) in
+            if listOfPayee == nil {
+                comppletion(nil)
+            }
             for payee in listOfPayee! {
                 let email = payee.object(forKey: Label.EmailKey) as! String
                 if currentUserEmail == email {
@@ -23,7 +26,7 @@ class DataController: NSObject {
                     break;
                 }
             }
-            let balanceValue = Float64(truncating: balance)
+            let balanceValue = Float(truncating: balance)
             comppletion(balanceValue)
         }
     }
