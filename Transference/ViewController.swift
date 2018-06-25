@@ -61,11 +61,12 @@ class ViewController: UIViewController {
     }
 
     @IBAction func AddPayee(_ sender: UIButton) {
-        let payeeViewController = PayeeTableViewController()
-        self.navigationController?.pushViewController(payeeViewController, animated: true)
+
     }
 
     @IBAction func Pay(_ sender: Any) {
+        let payeeViewController = PayeeTableViewController()
+        self.navigationController?.pushViewController(payeeViewController, animated: true)
     }
 }
 

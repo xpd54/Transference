@@ -15,6 +15,7 @@ struct Label {
     static let EmailKey = "email"
     static let BalanceKey = "balance"
     static let NameKey = "name"
+    static let SelectPayee = "Select Payee"
     static let ReuseIdentifire = "com.payee.resue"
 }
 

@@ -44,6 +44,7 @@ class DataController: NSObject {
             completion(listOfPayee)
         }) { (error) in
             print(error.localizedDescription)
+            completion(nil)
         }
     }
 }
