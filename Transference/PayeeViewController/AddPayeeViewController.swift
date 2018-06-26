@@ -23,7 +23,14 @@ class AddPayeeViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    // Not checking if payee already exist or not
     @IBAction func add(_ sender: Any) {
-        
+        let name = self.name.text
+        let email = self.email.text
+        if name != nil && email != nil {
+            DataController.addPayee(name: name!, email: email!)
+        } else {
+            // show error
+        }
     }
 }
