@@ -25,7 +25,13 @@ class PayViewController: UIViewController {
         let amount = (transferAmount.text! as NSString).floatValue
         if amount.isLess(than: Float(yourBalance)) {
             DataController.transfer(amount: amount, payeeEmail: payeeEmail) { (success) in
-                
+                let paySuccessViewController = PaySuccessViewController()
+                if success {
+                    paySuccessViewController.transactionMessage = Label.TransactionSuccess
+                } else {
+                    paySuccessViewController.transactionMessage = Label.TransactionError
+                }
+                self.navigationController?.present(paySuccessViewController, animated: true, completion: nil)
             }
         } else {
             //error

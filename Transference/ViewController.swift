@@ -73,18 +73,23 @@ class ViewController: UIViewController {
 
 extension ViewController: FUIAuthDelegate {
     func authUI(_ authUI: FUIAuth, didSignInWith authDataResult: AuthDataResult?, error: Error?) {
-        updateCurrentBalance()
-        // set user name as title
-        let currentUserName = authDataResult?.user.displayName
-        self.title = currentUserName
-        let currentUserEmail = authDataResult?.user.email
-        DataController.fetchCurrentBalance { (balance) in
-            // give them initial 100.0$ balance for signup 😛 to pay with it
-            if balance != nil && (balance?.isEqual(to: 0.0))! {
-                DataController.addPayee(name: currentUserName!, email: currentUserEmail!, initialBalance: 100.0)
-            } else {
-                // already a payee don't do anything
+        if error != nil {
+            // handle error
+        } else {
+            updateCurrentBalance()
+            // set user name as title
+            let currentUserName = authDataResult?.user.displayName
+            self.title = currentUserName
+            let currentUserEmail = authDataResult?.user.email
+            DataController.fetchCurrentBalance { (balance) in
+                // give them initial 100.0$ balance for signup 😛 to pay with it
+                if balance != nil && (balance?.isEqual(to: 0.0))! {
+                    DataController.addPayee(name: currentUserName!, email: currentUserEmail!, initialBalance: 100.0)
+                } else {
+                    // already a payee don't do anything
+                }
             }
         }
+        
     }
 }

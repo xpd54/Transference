@@ -17,6 +17,8 @@ struct Label {
     static let NameKey = "name"
     static let SelectPayee = "Select Payee"
     static let ReuseIdentifire = "com.payee.resue"
+    static let TransactionSuccess = "Transaction Successful"
+    static let TransactionError = "Transaction Error"
 }
 
 let cellBackgroundColor = UIColor(red: 223/256.0, green: 207/256.0, blue: 180/256.0, alpha: 1.0)
