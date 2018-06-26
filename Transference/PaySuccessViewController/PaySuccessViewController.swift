@@ -18,5 +18,12 @@ class PaySuccessViewController: UIViewController {
         DataController.fetchCurrentBalance { (balance) in
             self.currentBalance.text = "\(balance!)$"
         }
+        
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
+        self.navigationItem.rightBarButtonItem = doneButton
+    }
+    
+    @objc func done() {
+        self.navigationController?.popToRootViewController(animated: true)
     }
 }

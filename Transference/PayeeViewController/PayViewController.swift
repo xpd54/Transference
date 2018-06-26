@@ -31,7 +31,7 @@ class PayViewController: UIViewController {
                 } else {
                     paySuccessViewController.transactionMessage = Label.TransactionError
                 }
-                self.navigationController?.present(paySuccessViewController, animated: true, completion: nil)
+                self.navigationController?.pushViewController(paySuccessViewController, animated: true)
             }
         } else {
             //error
