@@ -29,8 +29,12 @@ class AddPayeeViewController: UIViewController {
         let email = self.email.text
         if name != nil && email != nil {
             DataController.addPayee(name: name!, email: email!, initialBalance: 0.0)
+            let successViewController = PaySuccessViewController()
+            successViewController.transactionMessage = "Successfully added \(name!)"
+            self.navigationController?.pushViewController(successViewController, animated: true)
         } else {
-            // show error
+            // Pop to root if error happen
+            self.navigationController?.popToRootViewController(animated: true)
         }
     }
 }

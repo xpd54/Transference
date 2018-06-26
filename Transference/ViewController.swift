@@ -22,6 +22,7 @@ class ViewController: UIViewController {
 
         // setup signup methods for firebase
         authUI.delegate = self
+        authUI.isSignInWithEmailHidden = true
         let providers: [FUIAuthProvider] = [FUIGoogleAuth()]
         self.authUI.providers = providers
         // check if current user is still login
@@ -85,6 +86,8 @@ extension ViewController: FUIAuthDelegate {
                 // give them initial 100.0$ balance for signup 😛 to pay with it
                 if balance != nil && (balance?.isEqual(to: 0.0))! {
                     DataController.addPayee(name: currentUserName!, email: currentUserEmail!, initialBalance: 100.0)
+                    // update current balance after adding them as payee
+                    self.updateCurrentBalance()
                 } else {
                     // already a payee don't do anything
                 }
