@@ -13,16 +13,20 @@ class PayViewController: UIViewController {
     @IBOutlet var transferAmount: UITextField!
     var payeeName = String()
     var payeeEmail = String()
-    var balance = Float()
+    var payeeIndexKey = String()
+    var yourBalance = Float()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Sending to \(payeeName)"
+        self.currentBalance.text = "\(yourBalance)$"
     }
 
     @IBAction func Send(_ sender: UIButton) {
         let amount = (transferAmount.text! as NSString).floatValue
-        if amount.isLess(than: Float(balance)) {
-            // process
+        if amount.isLess(than: Float(yourBalance)) {
+            DataController.transfer(amount: amount, payeeEmail: payeeEmail) { (success) in
+                
+            }
         } else {
             //error
         }

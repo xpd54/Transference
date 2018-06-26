@@ -11,28 +11,67 @@ import Firebase
 private var ref: DatabaseReference!
 
 class DataController: NSObject {
-    static func fetchCurrentBalance(comppletion: @escaping (Float?) -> Void) {
-        let currentUserEmail = Auth.auth().currentUser?.email
+    static func transfer(amount:Float, payeeEmail:String, completion: @escaping (Bool) -> Void) {
+        let currentUser = Auth.auth().currentUser
+        let currentEmail = currentUser?.email
+        let currentUserIndeKey = generateUserKey(email: currentEmail!)
+        fetchCurrentBalance { (balance) in
+            if balance != nil {
+                let payeeIndex = generateUserKey(email: payeeEmail)
+                fetchBalance(userEmail: payeeEmail, completion: { (payeeBalance) in
+                    if payeeBalance != nil {
+                        ref = Database.database().reference()
+                        let currentChildref = ref.child(Label.DataBaseRoot).child(currentUserIndeKey)
+                        currentChildref.updateChildValues([Label.BalanceKey: balance! - amount])
+
+                        let payeeChildRef = ref.child(Label.DataBaseRoot).child(payeeIndex)
+                        payeeChildRef.updateChildValues([Label.BalanceKey : payeeBalance! + amount])
+                        completion(true)
+                    } else {
+                        completion(false)
+                    }
+                })
+            } else {
+                completion(false)
+            }
+        }
+    }
+
+    static func fetchBalance(userEmail: String, completion: @escaping (Float?) -> Void) {
         var balance = NSNumber()
-        
-        fetchAllPayee { (listOfPayee) in
+        fetchPayee { (listOfPayee) in
             if listOfPayee == nil {
-                comppletion(nil)
+                completion(nil)
             }
             for payee in listOfPayee! {
                 let email = payee.object(forKey: Label.EmailKey) as! String
-                if currentUserEmail == email {
+                if userEmail == email {
                     balance = payee.object(forKey: Label.BalanceKey) as! NSNumber
                     break;
                 }
             }
             let balanceValue = Float(truncating: balance)
-            comppletion(balanceValue)
+            completion(balanceValue)
         }
     }
 
-    static func fetchAllPayee(completion:@escaping ([NSDictionary]?) -> Void) {
+    static func fetchCurrentBalance(completion: @escaping (Float?) -> Void) {
+        let currentUserEmail = Auth.auth().currentUser?.email
+        let currentUserIndex = generateUserKey(email: currentUserEmail!)
+        ref = Database.database().reference().child(Label.DataBaseRoot).child(currentUserIndex).child(Label.BalanceKey)
+        ref.observeSingleEvent(of: .value) { (snapshot) in
+            let balance = snapshot.value as? Float
+            if balance != nil {
+                completion(balance!)
+            } else {
+                completion(0.0)
+            }
+        }
+    }
+
+    static func fetchPayee(completion:@escaping ([NSDictionary]?) -> Void) {
         ref = Database.database().reference()
+        let currentUserEmail = Auth.auth().currentUser?.email!
         ref.child(Label.DataBaseRoot).observeSingleEvent(of: .value, with: { (snapshot) in
             // convert snapshot into array
             var listOfPayee = [NSDictionary]()
@@ -40,6 +79,10 @@ class DataController: NSObject {
             let allkeys = value?.allKeys as! [String]
             for key in allkeys {
                 let user = value?.object(forKey: key) as! NSDictionary
+                let userEmail = user.object(forKey: Label.EmailKey) as! String
+                if userEmail == currentUserEmail {
+                    continue
+                }
                 // keep the index key into dictionary for update use
                 user.setValue(key, forKey: Label.IndexKey)
                 listOfPayee.append(user)
@@ -49,5 +92,9 @@ class DataController: NSObject {
             print(error.localizedDescription)
             completion(nil)
         }
+    }
+
+    static func generateUserKey(email: String) -> String {
+        return email.components(separatedBy: CharacterSet.alphanumerics.inverted).joined(separator: "_")
     }
 }

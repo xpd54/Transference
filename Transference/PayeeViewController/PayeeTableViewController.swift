@@ -35,13 +35,15 @@ class PayeeTableViewController: UITableViewController {
             let payViewController = PayViewController()
             DataController.fetchCurrentBalance { (currentBalance) in
                 if currentBalance != nil {
-                    payViewController.balance = currentBalance!
+                    payViewController.yourBalance = currentBalance!
                     let user = self.listOfPayee[(selectedRow?.row)!]
                     let name = user.object(forKey: Label.NameKey) as! String
                     let email = user.object(forKey: Label.EmailKey) as! String
-                    payViewController.balance = currentBalance!
+                    let payeeIndexKey = user.object(forKey: Label.IndexKey) as! String
+
                     payViewController.payeeName = name
                     payViewController.payeeEmail = email
+                    payViewController.payeeIndexKey = payeeIndexKey
                     // remove checkmark from cell before moving to pay screen
                     self.tableView.cellForRow(at: selectedRow!)?.accessoryType = .none
                     self.navigationController?.pushViewController(payViewController, animated: true)
@@ -51,7 +53,7 @@ class PayeeTableViewController: UITableViewController {
     }
 
     func updatePayeeList() {
-        DataController.fetchAllPayee { (listOfPayee) in
+        DataController.fetchPayee { (listOfPayee) in
             if listOfPayee != nil {
                 self.listOfPayee = listOfPayee!
                 self.tableView.reloadData()
