@@ -28,7 +28,7 @@ class AddPayeeViewController: UIViewController {
         let name = self.name.text
         let email = self.email.text
         if name != nil && email != nil {
-            DataController.addPayee(name: name!, email: email!)
+            DataController.addPayee(name: name!, email: email!, initialBalance: 0.0)
         } else {
             // show error
         }

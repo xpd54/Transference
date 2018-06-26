@@ -12,15 +12,14 @@ private var ref: DatabaseReference!
 
 class DataController: NSObject {
 
-    static func addPayee(name: String, email: String) -> Void {
+    static func addPayee(name: String, email: String, initialBalance: Float) -> Void {
         let userIndexKey = generateUserKey(email: email)
         ref = Database.database().reference().child(Label.DataBaseRoot).child(userIndexKey)
-        let user = NSDictionary()
-        user.setValue(name, forKey: Label.NameKey)
-        user.setValue(email, forKey: Label.EmailKey)
         // Default balance of payee will be 0.0
-        user.setValue(0.0, forKey: Label.BalanceKey)
-        ref.updateChildValues(user as! [AnyHashable: Any])
+        let user = [Label.NameKey: name,
+                    Label.EmailKey: email,
+                    Label.BalanceKey: initialBalance] as [String : Any]
+        ref.updateChildValues(user)
     }
 
     static func transfer(amount:Float, payeeEmail:String, completion: @escaping (Bool) -> Void) {

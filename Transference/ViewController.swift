@@ -24,22 +24,22 @@ class ViewController: UIViewController {
         authUI.delegate = self
         let providers: [FUIAuthProvider] = [FUIGoogleAuth()]
         self.authUI.providers = providers
-
         // check if current user is still login
         if user != nil {
-            self.title = user?.displayName;
-            updateCurrentBalance()
+            self.title = user!.displayName;
         } else {
             showSignInUI()
         }
-        
         // update current balance
 
         super.viewDidLoad()
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        
+        // update current balance if user if loged in
+        if Auth.auth().currentUser != nil {
+            updateCurrentBalance()
+        }
         super.viewWillAppear(animated)
     }
 
@@ -61,7 +61,8 @@ class ViewController: UIViewController {
     }
 
     @IBAction func AddPayee(_ sender: UIButton) {
-
+        let addPayeeViewController = AddPayeeViewController()
+        self.navigationController?.pushViewController(addPayeeViewController, animated: true)
     }
 
     @IBAction func Pay(_ sender: Any) {
@@ -72,7 +73,18 @@ class ViewController: UIViewController {
 
 extension ViewController: FUIAuthDelegate {
     func authUI(_ authUI: FUIAuth, didSignInWith authDataResult: AuthDataResult?, error: Error?) {
+        updateCurrentBalance()
         // set user name as title
-        self.title = authDataResult?.user.displayName
+        let currentUserName = authDataResult?.user.displayName
+        self.title = currentUserName
+        let currentUserEmail = authDataResult?.user.email
+        DataController.fetchCurrentBalance { (balance) in
+            // give them initial 100.0$ balance for signup 😛 to pay with it
+            if balance != nil && (balance?.isEqual(to: 0.0))! {
+                DataController.addPayee(name: currentUserName!, email: currentUserEmail!, initialBalance: 100.0)
+            } else {
+                // already a payee don't do anything
+            }
+        }
     }
 }
